@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mb-5">
+  <h1 class="fw-bold text-primary mb-3">Experience Level Insights</h1>
+  <p class="text-muted fs-5">Understand how experience level impacts employment type and salary range in AI roles</p>
+</div>
+
+<!-- Employment Type by Experience -->
+<div class="card border-0 shadow-sm rounded-4 p-4 mb-5">
+  <h4 class="text-center text-secondary mb-4">Employment Type Distribution by Experience Level</h4>
+  <img src="data:image/png;base64,{{ chart1 }}" alt="Employment Type Chart" class="img-fluid rounded-3 shadow-sm">
+</div>
+
+<!-- Salary Distribution -->
+<div class="card border-0 shadow-sm rounded-4 p-4">
+  <h4 class="text-center text-secondary mb-4">Salary Distribution by Experience Level</h4>
+  <img src="data:image/png;base64,{{ chart2 }}" alt="Salary Chart" class="img-fluid rounded-3 shadow-sm">
+</div>
+
+<!-- Navigation Buttons -->
+<div class="text-center mt-5">
+  <a href="/skills" class="btn btn-outline-primary px-4">Back to Skills Analysis</a>
+  <a href="/" class="btn btn-primary px-4">Back to Dashboard</a>
+</div>
+{% endblock %}

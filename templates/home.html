@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mb-5">
+  <h1 class="fw-bold text-primary mb-3">AI Job Market Dashboard</h1>
+  <p class="text-muted fs-5">Explore trends, skills, and opportunities in the global AI job market</p>
+</div>
+
+<div class="row g-4 text-center">
+  <!-- Total Jobs -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+      <div class="card-body">
+        <h5 class="card-title text-secondary">Total Jobs</h5>
+        <h2 class="fw-bold text-primary">{{ total_jobs }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Average Salary -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+      <div class="card-body">
+        <h5 class="card-title text-secondary">Average Salary (USD)</h5>
+        <h2 class="fw-bold text-success">${{ avg_salary }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Industry -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+      <div class="card-body">
+        <h5 class="card-title text-secondary">Top Hiring Industry</h5>
+        <h4 class="fw-bold text-dark">{{ top_industry }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Explore Buttons -->
+<div class="text-center mt-5">
+  <a href="/industry" class="btn btn-primary btn-lg mx-2 px-4">View Industry Insights</a>
+  <a href="/skills" class="btn btn-outline-primary btn-lg mx-2 px-4">View Skills Analysis</a>
+</div>
+{% endblock %}

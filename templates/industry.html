@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mb-5">
+  <h1 class="fw-bold text-primary mb-3">Industry Insights</h1>
+  <p class="text-muted fs-5">Explore which industries are hiring the most AI professionals and their salary trends</p>
+</div>
+
+<div class="row mb-5 text-center">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm p-3 rounded-4">
+      <h5 class="text-secondary">Top Hiring Industry</h5>
+      <h3 class="fw-bold text-dark">{{ top_industry }}</h3>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm p-3 rounded-4">
+      <h5 class="text-secondary">Industry with Highest Avg Salary</h5>
+      <h3 class="fw-bold text-success">{{ highest_paid_industry }}</h3>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm p-3 rounded-4">
+      <h5 class="text-secondary">Total Industries</h5>
+      <h3 class="fw-bold text-primary">{{ total_industries }}</h3>
+    </div>
+  </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 p-4">
+  <h4 class="text-center mb-4 text-primary">Top 10 Industries Hiring AI Roles</h4>
+  <img src="data:image/png;base64,{{ img_df }}" alt="Industry Chart" class="img-fluid rounded-3">
+</div>
+
+<div class="text-center mt-5">
+  <a href="/" class="btn btn-outline-primary px-4">Back to Dashboard</a>
+  <a href="/skills" class="btn btn-primary px-4">Next: Skills Analysis</a>
+</div>
+{% endblock %}
