@@ -41,15 +41,8 @@ def industry_insights():
     plt.title('Top 10 Industries Hiring AI Roles')
     plt.xlabel('Number of Jobs')
     plt.ylabel('Industry')
-
-    # Save figure to memory (instead of saving to a file)
-    buf = io.BytesIO()
-    plt.tight_layout()
-    fig.savefig(buf, format='png')
-    plt.close(fig)  # 🟢 Important: Close figure to prevent overlapping in later plots
-    buf.seek(0)
-    img_data = base64.b64encode(buf.getvalue()).decode('utf-8')
-    buf.close()
+    img_data = fig_to_base64(fig)
+    plt.close(fig)
     return render_template('industry.html',
                            img_df=img_data,
                            top_industry=top_industry,
@@ -70,14 +63,8 @@ def skills_analysis():
     plt.title('Top 10 Most Demanded Skills')
     plt.xlabel('Number of Job Listings')
     plt.ylabel('Skill')
-
-    buf = io.BytesIO()
-    plt.tight_layout()
-    fig.savefig(buf, format='png')
-    buf.seek(0)
-    img_df = base64.b64encode(buf.getvalue()).decode('utf-8')
-    buf.close()
-
+    img_df = fig_to_base64(fig)
+    plt.close(fig)
     return render_template('skills.html', img_df=img_df)
 
 @app.route('/experience')
@@ -89,14 +76,8 @@ def experience_insights():
     plt.xlabel('Experience Level')
     plt.ylabel('Job Count')
     plt.legend(title='Employment Type', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.tight_layout()
-
-    buf1 = io.BytesIO()
-    fig1.savefig(buf1, format='png')
+    chart1 = fig_to_base64(fig1)
     plt.close(fig1)
-    buf1.seek(0)
-    chart1 = base64.b64encode(buf1.getvalue()).decode('utf-8')
-    buf1.close()
 
     # --- Chart 2: Salary Distribution by Experience Level ---
     fig2, ax2 = plt.subplots(figsize=(7,5))
@@ -104,18 +85,20 @@ def experience_insights():
     plt.title('Salary Distribution by Experience Level')
     plt.xlabel('Experience Level')
     plt.ylabel('Average Salary (USD)')
-    plt.tight_layout()
-
-    buf2 = io.BytesIO()
-    fig2.savefig(buf2, format='png')
+    chart2 = fig_to_base64(fig2)
     plt.close(fig2)
-    buf2.seek(0)
-    chart2 = base64.b64encode(buf2.getvalue()).decode('utf-8')
-    buf2.close()
 
     return render_template('experience.html', chart1=chart1, chart2=chart2)
 
-
+def fig_to_base64(fig):
+    import io, base64
+    buf = io.BytesIO()
+    fig.tight_layout()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    img_data = base64.b64encode(buf.getvalue()).decode('utf-8')
+    buf.close()
+    return img_data
 
 if __name__ == '__main__':
     app.run(debug=True)
