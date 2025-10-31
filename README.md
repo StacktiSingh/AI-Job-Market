@@ -44,7 +44,8 @@ templates/
 - Place your AI job market CSV in the `data/` folder as `ai_job_market.csv`.
 
 ## Screenshots
-_Add screenshots of your dashboard here._
+![Dashboard Screenshot](static/images/Dashboard.png)
+! [Skills Analysis Insights](static/images/Skills.png)
 
 ## License
 MIT
