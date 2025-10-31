@@ -45,7 +45,7 @@ templates/
 
 ## Screenshots
 ![Dashboard Screenshot](static/images/Dashboard.png)
-! [Skills Analysis Insights](static/images/Skills.png)
+! [Skills Analysis Insights](static/images/Skiils.png)
 
 ## License
 MIT
